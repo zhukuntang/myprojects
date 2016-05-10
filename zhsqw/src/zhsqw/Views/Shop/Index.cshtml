@@ -1,4 +1,4 @@
-﻿@model IEnumerable<zhsqw.Models.wy_news>
+﻿@model IndexViewModel
 
 @{
     Layout = "_shop";
@@ -11,52 +11,35 @@
     <a asp-action="Create">Create New</a>
 </p>
 <form asp-controller="Shop" asp-action="Index" method="post" role="form">
-    <input id="cde" />
-    @Html.TextBox("abc")1:@ViewBag.abc,2:@ViewBag.abc2
+    @Html.TextBox("abc")1:@ViewBag.abc,2:@ViewBag.cde
+    <input asp-for="cde"  />
     <input type="submit">
 </form>
-    <table class="table">
+<table class="table">
+    @foreach (var item in Model.SysNews)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AreaID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsClass)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsContent)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsPic)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsTitle)
-            </th>
-            <th></th>
+            <td>
+                @Html.DisplayFor(modelItem => item.SQID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewsClass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewsContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewsPic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewsTitle)
+            </td>
+            <td>
+                <a asp-action="Index" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
         </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AreaID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NewsClass)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NewsContent)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NewsPic)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NewsTitle)
-                </td>
-                <td>
-                    <a asp-action="Index" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
-        }
-    </table>
+    }
+</table>
+

@@ -17,7 +17,7 @@ namespace zhsqw.Models
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
-        public DbSet<wy_news> wy_news { get; set; }
-        public DbSet<wy_ads> wy_ads { get; set; }
+        public DbSet<SysNews> SysNews { get; set; }
+        public DbSet<SysAds> SysAds { get; set; }
     }
 }

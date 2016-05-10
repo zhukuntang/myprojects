@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using zhsqw.Models;
+using zhsqw.ViewModels.Shop;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Http.Internal;
@@ -20,17 +21,18 @@ namespace zhsqw.Controllers
 
         public IActionResult Index()
         {
-            HttpContext.Session.SetString("www", "zkt");
-            
-            return View(_context.wy_news.ToList());
+            IndexViewModel q = new IndexViewModel();
+            q.SysNews = _context.SysNews.ToList();
+            return View(q);
         }
 
         [HttpPost]
-        public IActionResult Index(FormCollection collection)
+        public IActionResult Index(IndexViewModel q)
         {
-            //ViewBag.abc = collection["abc"];
-            ViewBag.abc2 = HttpContext.Session.GetString("www");
-            return View(_context.wy_news.ToList());
+            ViewBag.abc = q.abc;
+            ViewBag.cde = q.cde;
+            q.SysNews = _context.SysNews.Where(m => m.ID == q.abc).ToList();
+            return View(q);
         }
     }
 }
