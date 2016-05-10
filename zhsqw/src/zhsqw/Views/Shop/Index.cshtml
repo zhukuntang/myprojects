@@ -1,4 +1,4 @@
-﻿@model IndexViewModel
+﻿@model IEnumerable<SysNews>
 
 @{
     Layout = "_shop";
@@ -11,12 +11,19 @@
     <a asp-action="Create">Create New</a>
 </p>
 <form asp-controller="Shop" asp-action="Index" method="post" role="form">
-    @Html.TextBox("abc")1:@ViewBag.abc,2:@ViewBag.cde
-    <input asp-for="cde"  />
+    @Html.TextBox("abc")1: @ViewBag.abc 8
     <input type="submit">
 </form>
+<form asp-controller="Shop" asp-action="Index" method="post" role="form">
+    @Html.TextBox("cde")1: @ViewBag.cde 8
+    <input type="submit">
+</form>
+@using (Html.BeginForm("", "ShopController"){)
+
+
+    }
 <table class="table">
-    @foreach (var item in Model.SysNews)
+    @foreach (var item in Model)
     {
         <tr>
             <td>
@@ -35,7 +42,7 @@
                 @Html.DisplayFor(modelItem => item.NewsTitle)
             </td>
             <td>
-                <a asp-action="Index" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="m1" asp-route-id="@item.ID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             </td>

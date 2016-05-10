@@ -1,0 +1,11 @@
+﻿@model QueryViewModel
+
+@{
+    Layout = "_shop";
+    ViewData["Title"] = "Index";
+}
+
+<form asp-controller="Shop" asp-action="Index" method="post" role="form">
+    <input asp-for="SQID" />
+    <input type="submit">
+</form>

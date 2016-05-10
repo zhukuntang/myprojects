@@ -21,18 +21,28 @@ namespace zhsqw.Controllers
 
         public IActionResult Index()
         {
-            IndexViewModel q = new IndexViewModel();
-            q.SysNews = _context.SysNews.ToList();
+            return View(_context.SysNews.ToList());
+        }
+
+        [HttpPost, ActionName("Index")]
+        public IActionResult Query(FormCollection collection) 
+        {
+            ViewBag.abc = collection["abc"];
+            ViewBag.cde = collection["cde"];
+            return View(_context.SysNews.ToList());
+        }
+
+        public IActionResult m1()
+        {
+            QueryViewModel q = new QueryViewModel();
             return View(q);
         }
 
         [HttpPost]
-        public IActionResult Index(IndexViewModel q)
+        public IActionResult m1(QueryViewModel q)
         {
-            ViewBag.abc = q.abc;
-            ViewBag.cde = q.cde;
-            q.SysNews = _context.SysNews.Where(m => m.ID == q.abc).ToList();
-            return View(q);
+
+            return RedirectToAction("Shop", "Index");
         }
     }
 }
