@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using zhsqw.Models;
+using Microsoft.AspNet.Mvc.Razor;
 
 namespace zhsqw
 {
@@ -39,15 +40,17 @@ namespace zhsqw
 
             services.AddEntityFramework()
                 .AddSqlServer()
-                .AddDbContext<ApplicationDbContext>(options =>
+                .AddDbContext<Models.DbContext>(options =>
                     options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<Models.DbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddCaching();
             services.AddSession(s => { s.IdleTimeout = TimeSpan.FromMinutes(20); });
+
+            services.Configure<RazorViewEngineOptions>(options => options.ViewLocationExpanders.Add(new MyViewRule()));
 
             services.AddMvc();
         }
@@ -73,7 +76,7 @@ namespace zhsqw
                     using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
                         .CreateScope())
                     {
-                        serviceScope.ServiceProvider.GetService<ApplicationDbContext>()
+                        serviceScope.ServiceProvider.GetService<Models.DbContext>()
                              .Database.Migrate();
                     }
                 }
@@ -93,8 +96,14 @@ namespace zhsqw
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "wuye",
+                    template: "wuye/{controller}/{action}/{id?}");
+                routes.MapRoute(
+                    name: "sell",
+                    template: "sell/{controller}/{action}/{id?}");
+                routes.MapRoute(
                     name: "default",
-                    template: "{controller=Shop}/{action=Index}/{id?}");
+                    template: "{controller=wuye}/{action=Index}/{id?}");
             });
         }
 

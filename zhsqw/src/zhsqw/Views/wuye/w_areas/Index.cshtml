@@ -1,0 +1,32 @@
+﻿@model IEnumerable<w_areas>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">添加小区</a>
+</p>
+<table class="table">
+    <tr>
+        <th>所在地区</th>
+        <th>社区名称</th>
+        <th>操作</th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaName)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.ID">编辑</a> |
+            <a asp-action="Delete" asp-route-id="@item.ID" onclick="return confirm('您确定删除吗？')">删除</a>
+        </td>
+    </tr>
+}
+</table>

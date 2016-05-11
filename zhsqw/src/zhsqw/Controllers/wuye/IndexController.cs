@@ -10,24 +10,10 @@ using Microsoft.AspNet.Mvc.Rendering;
 
 namespace zhsqw.Controllers
 {
-    public class ShopController : Controller
+    public class wuyeController : Controller
     {
-        private DbContext _context;
-
-        public ShopController(DbContext context)
-        {
-            _context = context;
-        }
-
         public IActionResult Index()
         {
-            return View();
-        }
-
-        [HttpPost, ActionName("Index")]
-        public IActionResult Query()
-        {
-
             return View();
         }
     }

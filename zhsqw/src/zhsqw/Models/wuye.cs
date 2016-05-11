@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace zhsqw.Models
 {
-    public class SysNews
+    public class news
     {
         public string ID { get; set; }
         public string SQID { get; set; }
@@ -15,10 +15,10 @@ namespace zhsqw.Models
         public string NewsContent { get; set; }
     }
 
-    public class SysAds
+    public class w_areas
     {
         public string ID { get; set; }
-        public string AdOrder { get; set; }
-        public string AdPath { get; set; }
+        public string CityID { get; set; }
+        public string AreaName { get; set; }
     }
 }
