@@ -3,21 +3,32 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>管理系统</title>
-    <link rel="stylesheet" type="text/css" href="/myjs/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="/myjs/themes/icon.css">
-    <script type="text/javascript" src="/myjs/jquery.min.js"></script>
-    <script type="text/javascript" src="/myjs/jquery.easyui.min.js"></script>
+    <style type="text/css">
+        #contentid{color:green;background:url(/images/wuye/title_ico.png) no-repeat left center; padding-left:20px}
+    </style>
+    <link rel="stylesheet" type="text/css" href="~/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="~/easyui/themes/icon.css">
+    <script type="text/javascript" src="~/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="~/easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript">
-        
+        function gom(m, url) {
+            $("#contentid").text("当前操作：" + $(m).text());
+            $("#mframe").attr("src", url);
+        }
     </script>
 </head>
 <body class="easyui-layout">
-    <div>
-        <div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px">north region</div>
-        <div data-options="region:'west',split:true,title:'West'" style="width:150px;padding:10px;">west content</div>
-        <div data-options="region:'east',split:true,collapsed:true,title:'East'" style="width:100px;padding:10px;">east region</div>
-        <div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">south region</div>
-        <div data-options="region:'center',title:'Center'"></div>
+    <div data-options="region:'north',border:false" style="height:100px;background-color:#a1ccf1">
+        <div style="width:1003px;height:100px;background-image:url(/images/wuye/topbg.jpg)">
+            <img src="~/images/wuye/logo.png" alt="中国智慧社区网" style="margin:15px auto auto 15px;height:70px" />
+        </div>
+    </div>
+    <div data-options="region:'west',split:false,title:'导航菜单'" style="width:220px;padding:10px;">
+        <a onclick="gom(this,'/w_areas/Index')">社区管理</a>
+    </div>
+    <div data-options="region:'south',border:false" style="height:35px;background:#A9FACD;padding:10px;">south region</div>
+    <div data-options="region:'center',title:'<span id=\'contentid\'></span>'">
+        <iframe id="mframe" name="mframe" style="width:99%;height:99%;border:0px" allowTransparency="true" frameborder="0"></iframe>
     </div>
 </body>
 </html>
