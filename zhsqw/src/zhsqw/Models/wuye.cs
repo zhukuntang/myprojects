@@ -20,5 +20,6 @@ namespace zhsqw.Models
         public string ID { get; set; }
         public string CityID { get; set; }
         public string AreaName { get; set; }
+        public string Addr { get; set; }
     }
 }

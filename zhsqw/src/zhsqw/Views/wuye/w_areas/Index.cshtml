@@ -1,31 +1,39 @@
 ﻿@model IEnumerable<w_areas>
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = "_wuye";
+    ViewData["Title"] = "社区管理";
 }
 
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">添加小区</a>
-</p>
-<table class="table">
+<table cellpadding="0" cellspacing="0" width="700">
     <tr>
-        <th>所在地区</th>
-        <th>社区名称</th>
-        <th>操作</th>
+        <td style="width:15%" class="qtitle">社区名称：</td>
+        <td style="width:50%" class="qcontent">
+            @Html.TextBox("areaname")
+        </td>
+        <td style="width:35%" class="qbuttons">
+            <a asp-action="Index" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">查询</a> |
+            <a asp-action="Create" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加社区</a>
+        </td>
+    </tr>
+</table>
+<table cellpadding="0" cellspacing="0" width="700">
+    <tr>
+        <th width="200">社区名称</th>
+        <th width="350">详细地址</th>
+        <th width="150">操作</th>
     </tr>
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CityID)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.AreaName)
         </td>
         <td>
-            <a asp-action="Edit" asp-route-id="@item.ID">编辑</a> |
-            <a asp-action="Delete" asp-route-id="@item.ID" onclick="return confirm('您确定删除吗？')">删除</a>
+            @Html.DisplayFor(modelItem => item.Addr)
+        </td>
+        <td style="text-align:center">
+            <a asp-action="Edit" asp-route-id="@item.ID" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</a> |
+            <a asp-action="Delete" asp-route-id="@item.ID" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="return confirm('您确定删除吗？')">删除</a>
         </td>
     </tr>
 }
