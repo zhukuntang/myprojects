@@ -11,6 +11,12 @@
     <script src="~/easyui/jquery.min.js"></script>
     <script src="~/easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript">
+        $(document).ready(function () {
+            $(".submenu").each(function () {
+                $(this).mouseover(function () { $(this).css("background-color", "#ffcccc"); });
+                $(this).mouseout(function () { $(this).css("background-color", "#ffffff"); });
+            })
+        });
         function gom(m, url) {
             $("#contentid").text("当前操作：" + $(m).text());
             $("#mframe").attr("src", url);
@@ -26,10 +32,22 @@
     </style>
 </head>
 <body class="easyui-layout">
-    <div data-options="region:'north',border:false" style="height:100px;background-color:#a1ccf1">
+    <div data-options="region:'north',border:false" style="height:100px;background-color:#a1ccf1;position:relative">
         <div style="width:1003px;height:100px;background-image:url(/images/wuye/topbg.jpg)">
-            @*<img src="~/images/wuye/logo.png" alt="" style="margin:15px auto auto 15px;height:70px" />*@
+            <img src="~/images/wuye/logo.png" alt="" style="height:70px;margin:15px auto auto 15px" />
         </div>
+        <div style="position:absolute;top:20px;right:20px;width:255px;font-size:14px;color:#0e2d5f;line-height:20px">
+            <div style="display:inline-block;width:80px;text-align:center">
+                <img src="~/images/home.png" alt="网站首页" /><br />网站首页
+            </div>
+            <div style="display:inline-block;width:80px;text-align:center">
+                <img src="~/images/modpass.png" alt="修改密码" /><br />修改密码
+            </div>
+            <div style="display:inline-block;width:80px;text-align:center">
+                <img src="~/images/exit.png" alt="安全退出" /><br />安全退出
+            </div>
+        </div>
+        <div style="position:absolute;left:6px;bottom:3px">当前用户：<span style="margin-left:35px" />公司名称：</div>
     </div>
     <div data-options="region:'west',split:false,title:'导航菜单'" style="width:180px">
         <div class="easyui-accordion" data-options="fit:true,border:false">
@@ -69,11 +87,10 @@
                 <div class="submenu" onclick="gom(this,'/')">账户变动查询</div>
             </div>
         </div>
-
     </div>
-    <div data-options="region:'south',border:false" style="height:35px;background:#A9FACD;padding:10px;">south region</div>
+    <div data-options="region:'south',border:false" style="height:35px;background:#A9FACD;padding:10px;text-align:center">中国智慧社区网</div>
     <div data-options="region:'center',title:'<div id=\'contentid\'></div>'">
-        <iframe id="mframe" name="mframe" style="width:99%;height:99%;border:0px" allowTransparency="true" frameborder="0"></iframe>
+        <iframe id="mframe" name="mframe" style="width:100%;height:99%;border:0px" allowTransparency="true" frameborder="0"></iframe>
     </div>
 </body>
 </html>
