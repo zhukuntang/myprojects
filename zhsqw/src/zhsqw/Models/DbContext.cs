@@ -8,7 +8,7 @@ using zhsqw.Models;
 
 namespace zhsqw.Models
 {
-    public class DbContext : IdentityDbContext<IdentityUser>
+    public class MyDbContext : IdentityDbContext<IdentityUser>
     {
         protected override void OnModelCreating(ModelBuilder builder)
         {

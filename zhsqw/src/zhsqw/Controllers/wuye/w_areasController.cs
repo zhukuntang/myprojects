@@ -9,9 +9,9 @@ namespace zhsqw.Controllers.wuye
 {
     public class w_areasController : Controller
     {
-        private DbContext _context;
+        private MyDbContext _context;
 
-        public w_areasController(DbContext context)
+        public w_areasController(MyDbContext context)
         {
             _context = context;
         }
@@ -19,22 +19,6 @@ namespace zhsqw.Controllers.wuye
         public IActionResult Index()
         {
             return View(_context.w_areas.ToList());
-        }
-
-        public IActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
-
-            w_areas w_areas = _context.w_areas.Single(m => m.ID == id);
-            if (w_areas == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(w_areas);
         }
 
         public IActionResult Create()
@@ -58,11 +42,6 @@ namespace zhsqw.Controllers.wuye
 
         public IActionResult Edit(string id)
         {
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
-
             w_areas w_areas = _context.w_areas.Single(m => m.ID == id);
             if (w_areas == null)
             {

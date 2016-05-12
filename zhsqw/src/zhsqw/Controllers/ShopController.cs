@@ -12,9 +12,9 @@ namespace zhsqw.Controllers
 {
     public class ShopController : Controller
     {
-        private DbContext _context;
+        private MyDbContext _context;
 
-        public ShopController(DbContext context)
+        public ShopController(MyDbContext context)
         {
             _context = context;
         }

@@ -28,11 +28,9 @@
         </tr>
         <tr>
             <td style="text-align:center" colspan="2">
-                <a onclick="$('form').submit();$(this).parent().text('正在提交...')" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">添加社区</a>
+                <a onclick="$('form').submit();$(this).parent().text('正在提交...')" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">添加提交</a>
+                <a asp-action="Index" class="easyui-linkbutton" data-options="iconCls:'icon-redo'">返回列表</a>
             </td>
         </tr>
 </table>
 </form>
-<div style="width:200px;text-align:center;margin:10px auto">
-    <a asp-action="Index">返回列表</a>
-</div>

@@ -40,11 +40,11 @@ namespace zhsqw
 
             services.AddEntityFramework()
                 .AddSqlServer()
-                .AddDbContext<Models.DbContext>(options =>
+                .AddDbContext<Models.MyDbContext>(options =>
                     options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
             services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<Models.DbContext>()
+                .AddEntityFrameworkStores<Models.MyDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddCaching();
@@ -76,7 +76,7 @@ namespace zhsqw
                     using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
                         .CreateScope())
                     {
-                        serviceScope.ServiceProvider.GetService<Models.DbContext>()
+                        serviceScope.ServiceProvider.GetService<Models.MyDbContext>()
                              .Database.Migrate();
                     }
                 }
@@ -95,12 +95,6 @@ namespace zhsqw
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "wuye",
-                    template: "wuye/{controller}/{action}/{id?}");
-                routes.MapRoute(
-                    name: "sell",
-                    template: "sell/{controller}/{action}/{id?}");
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=wuye}/{action=Index}/{id?}");

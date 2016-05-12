@@ -22,7 +22,8 @@ namespace zhsqw
                 "~/Views/{1}/{0}.cshtml",
                 "~/Views/Shared/{0}.cshtml",
                 "~/Views/wuye/{1}/{0}.cshtml",
-                "~/Views/sell/{1}/{0}.cshtml"
+                "~/Views/sell/{1}/{0}.cshtml",
+                "~/Views/admin/{1}/{0}.cshtml"
             };
             return viewLocations;
         }
