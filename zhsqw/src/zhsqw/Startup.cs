@@ -4,20 +4,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.FileProviders;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using zhsqw.Models;
 using Microsoft.AspNet.Mvc.Razor;
+using zhsqw.Models;
 
 namespace zhsqw
 {
     public class Startup
     {
+        public static IFileProvider WebRootFileProvider;
+
         public Startup(IHostingEnvironment env)
         {
+            WebRootFileProvider = env.WebRootFileProvider;
+
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
@@ -97,7 +102,7 @@ namespace zhsqw
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=wuye}/{action=Index}/{id?}");
+                    template: "{controller=wuye}/{action=test}/{id?}");
             });
         }
 
