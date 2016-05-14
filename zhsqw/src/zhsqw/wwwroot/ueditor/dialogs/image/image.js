@@ -31,7 +31,6 @@ var imageUploader = {},
                     clickHandler(tabHeads, tabBodys, ci);
                 }
             }
-
         }
         addUrlChangeListener();
         addOKListener();
