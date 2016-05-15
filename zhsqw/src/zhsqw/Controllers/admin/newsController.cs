@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
+using System.Data;
 using zhsqw.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
-using NPOI.HSSF.UserModel;
 
 namespace zhsqw.Controllers
 {
@@ -23,11 +19,6 @@ namespace zhsqw.Controllers
 
         public IActionResult Index()
         {
-            JObject jo = (JObject)JsonConvert.DeserializeObject("{\"PARTNER\":\"zkt8\",\"SELLER\":{\"a\":\"ln8\"}}");
-
-            ViewBag.zkt = jo["PARTNER"].ToString();
-            ViewBag.ln = jo["SELLER"]["a"].ToString();
-
             return View(db.news.ToList());
         }
 
