@@ -31,7 +31,7 @@ public class Uploader
     public Hashtable upFile(HttpContext cxt, string pathbase, string[] filetype, int size)
     {
         pathbase = pathbase + DateTime.Now.ToString("yyyy-MM-dd") + "/";
-        uploadpath = Uitils.GetFilePhysicalPath(pathbase);//获取文件上传路径
+        uploadpath = Utiles.GetFilePhysicalPath(pathbase);//获取文件上传路径
 
         try
         {
@@ -80,7 +80,7 @@ public class Uploader
     public Hashtable upScrawl(HttpContext cxt, string pathbase, string tmppath, string base64Data)
     {
         pathbase = pathbase + DateTime.Now.ToString("yyyy-MM-dd") + "/";
-        uploadpath = Uitils.GetFilePhysicalPath(pathbase);//获取文件上传路径
+        uploadpath = Utiles.GetFilePhysicalPath(pathbase);//获取文件上传路径
         FileStream fs = null;
         try
         {
@@ -103,7 +103,7 @@ public class Uploader
         {
             fs.Flush();
             fs.Dispose();
-            deleteFolder(Uitils.GetFilePhysicalPath(tmppath));
+            deleteFolder(Utiles.GetFilePhysicalPath(tmppath));
         }
         return getUploadInfo();
     }

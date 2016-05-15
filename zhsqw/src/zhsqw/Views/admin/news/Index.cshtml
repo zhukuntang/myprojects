@@ -1,4 +1,4 @@
-﻿@model IEnumerable<zhsqw.Models.news>
+﻿@model PagerHelper<news>
 
 @{
     Layout = "_wuye";
@@ -31,7 +31,7 @@
             <th style="width:130px">发布时间</th>
             <th style="width:150px">操作</th>
         </tr>
-        @foreach (var item in Model)
+        @foreach (var item in Model.PagedData)
             {
             <tr>
                 <td>
@@ -52,5 +52,10 @@
                 </td>
             </tr>
         }
+        <tr>
+            <td style="height:45px;text-align:center" colspan="5">
+                @Html.Raw(Model.PageNumberBar)
+            </td>
+        </tr>
     </table>
 </form>
