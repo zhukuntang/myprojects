@@ -1,24 +1,34 @@
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using zhsqw.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
+using NPOI.HSSF.UserModel;
 
 namespace zhsqw.Controllers
 {
     public class newsController : Controller
     {
-        private MyDbContext _context;
+        private MyDbContext db;
 
         public newsController(MyDbContext context)
         {
-            _context = context;    
+            db = context;    
         }
 
         public IActionResult Index()
         {
-            return View(_context.news.ToList());
+            JObject jo = (JObject)JsonConvert.DeserializeObject("{\"PARTNER\":\"zkt8\",\"SELLER\":{\"a\":\"ln8\"}}");
+
+            ViewBag.zkt = jo["PARTNER"].ToString();
+            ViewBag.ln = jo["SELLER"]["a"].ToString();
+
+            return View(db.news.ToList());
         }
 
         [HttpPost, ActionName("Index")]
@@ -28,11 +38,11 @@ namespace zhsqw.Controllers
             string areaname = Request.Form["areaname"];
             if (areaname.Length > 0)
             {
-                newslist = from m in _context.news where (m.NewsTitle.Contains(areaname)) orderby m.BookTime descending select m;
+                newslist = db.news.Where(x => x.NewsTitle.Contains(areaname)).OrderByDescending(x => x.BookTime);
             }
             else
             {
-                newslist = _context.news.ToList();
+                newslist = db.news.ToList();
             }
             return View(newslist);
         }
@@ -48,8 +58,8 @@ namespace zhsqw.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.news.Add(news);
-                _context.SaveChanges();
+                db.news.Add(news);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(news);
@@ -57,7 +67,7 @@ namespace zhsqw.Controllers
 
         public IActionResult Edit(string id)
         {
-            news news = _context.news.Single(m => m.ID == id);
+            news news = db.news.Single(m => m.ID == id);
             if (news == null)
             {
                 return HttpNotFound();
@@ -71,8 +81,8 @@ namespace zhsqw.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Update(news);
-                _context.SaveChanges();
+                db.Update(news);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(news);

@@ -9,16 +9,16 @@ namespace zhsqw.Controllers.wuye
 {
     public class w_areasController : Controller
     {
-        private MyDbContext _context;
+        private MyDbContext db;
 
         public w_areasController(MyDbContext context)
         {
-            _context = context;
+            db = context;
         }
 
         public IActionResult Index()
         {
-            return View(_context.w_areas.ToList());
+            return View(db.w_areas.ToList());
         }
 
         public IActionResult Create()
@@ -33,8 +33,8 @@ namespace zhsqw.Controllers.wuye
             if (ModelState.IsValid)
             {
                 w_areas.ID = Guid.NewGuid().ToString();
-                _context.w_areas.Add(w_areas);
-                _context.SaveChanges();
+                db.w_areas.Add(w_areas);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(w_areas);
@@ -42,7 +42,7 @@ namespace zhsqw.Controllers.wuye
 
         public IActionResult Edit(string id)
         {
-            w_areas w_areas = _context.w_areas.Single(m => m.ID == id);
+            w_areas w_areas = db.w_areas.Single(m => m.ID == id);
             if (w_areas == null)
             {
                 return HttpNotFound();
@@ -56,8 +56,8 @@ namespace zhsqw.Controllers.wuye
         {
             if (ModelState.IsValid)
             {
-                _context.Update(w_areas);
-                _context.SaveChanges();
+                db.Update(w_areas);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(w_areas);
@@ -65,9 +65,9 @@ namespace zhsqw.Controllers.wuye
 
         public IActionResult Delete(string id)
         {
-            w_areas w_areas = _context.w_areas.Single(m => m.ID == id);
-            _context.w_areas.Remove(w_areas);
-            _context.SaveChanges();
+            w_areas w_areas = db.w_areas.Single(m => m.ID == id);
+            db.w_areas.Remove(w_areas);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
     }

@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "dnx451": {
+      "bin": {
+        "assembly": "../../src/zhsqw/wwwroot/dll/NPOI.OpenXmlFormats.dll"
+      },
+      "dependencies": {
+        "NPOI.OpenXml4Net": "1.0.0-*"
+      }
+    },
+    "dnxcore50": {
+      "bin": {
+        "assembly": "../../src/zhsqw/wwwroot/dll/NPOI.OpenXmlFormats.dll"
+      },
+      "dependencies": {
+        "NPOI.OpenXml4Net": "1.0.0-*"
+      }
+    }
+  }
+}

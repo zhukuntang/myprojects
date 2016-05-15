@@ -96,7 +96,7 @@ namespace zhsqw
 
                 URL = pathbase + filename;
             }
-            catch (Exception e)
+            catch
             {
                 state = "未知错误";
                 URL = "";

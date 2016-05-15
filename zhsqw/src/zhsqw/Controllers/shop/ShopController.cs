@@ -12,11 +12,11 @@ namespace zhsqw.Controllers
 {
     public class shopController : Controller
     {
-        private MyDbContext _context;
+        private MyDbContext db;
 
         public shopController(MyDbContext context)
         {
-            _context = context;
+            db = context;
         }
 
         public IActionResult Index()
