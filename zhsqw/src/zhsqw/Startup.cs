@@ -71,7 +71,7 @@ namespace zhsqw
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Comm/Error");
                 try
                 {
                     using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
