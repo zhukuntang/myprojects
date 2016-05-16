@@ -42,14 +42,6 @@
         "NPOI.OpenXml4Net": "1.0.0-*",
         "NPOI.OpenXmlFormats": "1.0.0-*"
       }
-    },
-    "dnxcore50": {
-      "dependencies": {
-        "NPOI": "1.0.0-*",
-        "NPOI.OOXML": "1.0.0-*",
-        "NPOI.OpenXml4Net": "1.0.0-*",
-        "NPOI.OpenXmlFormats": "1.0.0-*"
-      }
     }
   },
 
