@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0-*",
+  "description": "mylibs Class Library",
+  "authors": [ "Administrator" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "net451": {
+      "frameworkAssemblies": {
+        "System.configuration": "4.0.0.0",
+        "System.Data": "4.0.0.0"
+      },
+      "dependencies": {
+        "NPOI": "1.0.0-*",
+        "NPOI.OOXML": "1.0.0-*",
+        "NPOI.OpenXml4Net": "1.0.0-*",
+        "NPOI.OpenXmlFormats": "1.0.0-*"
+      }
+    }
+  },
+  "dependencies": {
+    "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-final",
+    "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-final"
+  }
+}

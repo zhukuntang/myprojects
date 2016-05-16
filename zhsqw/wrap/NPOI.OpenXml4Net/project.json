@@ -1,17 +1,9 @@
 {
   "version": "1.0.0-*",
   "frameworks": {
-    "dnx451": {
+    "net451": {
       "bin": {
-        "assembly": "../../src/zhsqw/wwwroot/dll/NPOI.OpenXml4Net.dll"
-      },
-      "dependencies": {
-        "NPOI": "1.0.0-*"
-      }
-    },
-    "dnxcore50": {
-      "bin": {
-        "assembly": "../../src/zhsqw/wwwroot/dll/NPOI.OpenXml4Net.dll"
+        "assembly": "../../src/mydlls/NPOI.OpenXml4Net.dll"
       },
       "dependencies": {
         "NPOI": "1.0.0-*"

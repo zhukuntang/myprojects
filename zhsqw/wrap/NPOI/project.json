@@ -1,14 +1,9 @@
 {
   "version": "1.0.0-*",
   "frameworks": {
-    "dnx451": {
+    "net451": {
       "bin": {
-        "assembly": "../../src/zhsqw/wwwroot/dll/NPOI.dll"
-      }
-    },
-    "dnxcore50": {
-      "bin": {
-        "assembly": "../../src/zhsqw/wwwroot/dll/NPOI.dll"
+        "assembly": "../../src/mydlls/NPOI.dll"
       }
     }
   }
