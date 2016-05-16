@@ -20,7 +20,7 @@ namespace zhsqw
             viewLocations = new[]
             {
                 "~/Views/{1}/{0}.cshtml",
-                "~/Views/shared/{0}.cshtml",
+                "~/Views/comm/{0}.cshtml",
                 "~/Views/wuye/{1}/{0}.cshtml",
                 "~/Views/sell/{1}/{0}.cshtml",
                 "~/Views/admin/{1}/{0}.cshtml"
