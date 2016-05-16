@@ -4,7 +4,21 @@
     Layout = "_wuye";
     ViewData["Title"] = "综合信息管理";
 }
-
+<script type="text/javascript">
+    function PagePostSubmit(url, page) {
+        document.getElementById("PageIndex").value = page;
+        document.forms[0].method = "post";
+        document.forms[0].action = url;
+        document.forms[0].submit();
+    }
+</script>
+<style>
+    /*页码导航*/
+.numpage{padding-top:0px;font-size:12px;font-family:'NSimSun';display:inline-block;*display:inline;zoom:1}
+.numpage span{color:#e01a22;margin:0px;width:15px;height:24px;display:block;float:left;line-height:24px;text-align:center}
+.numpage a{border:#DDDDDD solid 1px;width:24px;height:24px;display:block;float:left;background:#ffffff;color:#333333;margin:4px;text-align:center;line-height:24px;text-decoration:none}
+.numpage a:hover{border:#DDDDDD solid 1px;background:#EEEEEE;color:#e01a22}
+</style>
 <form asp-action="Index" id="form1">
     <div style="width:780px;margin:20px auto 0px">
         <div style="float:left">

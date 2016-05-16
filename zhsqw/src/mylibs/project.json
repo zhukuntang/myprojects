@@ -20,6 +20,7 @@
     }
   },
   "dependencies": {
+    "EntityFramework.Core": "7.0.0-rc1-final",
     "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-final",
     "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-final"
   }

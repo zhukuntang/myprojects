@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -9,9 +10,9 @@ public class PagerHelper<T>
     public int TotalPages { set; get; }
 
     public string PageNumberBar { set; get; }
-    public IQueryable<T> PagedData { set; get; }
+    public IList<T> PagedData { set; get; }
 
-    public PagerHelper(IQueryable<T> datas, string url, int pagesize, int pageindex, int numspan, bool ispost)
+    public PagerHelper(IList<T> datas, string url, int pagesize, int pageindex, int numspan, bool ispost)
     {
         string urlTemplate = string.Empty;
         if (ispost)
@@ -88,6 +89,6 @@ public class PagerHelper<T>
         PageSize = pagesize;
         TotalPages = totalpages;
         PageNumberBar = pageinfo.ToString();
-        PagedData = datas.Skip((pageindex - 1) * pagesize).Take(pagesize);
+        PagedData = datas.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
     }
 }

@@ -98,7 +98,7 @@ namespace zhsqw
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=wuye}/{action=test}/{id?}");
+                    template: "{controller=wuye}/{action=index}/{id?}");
             });
         }
 

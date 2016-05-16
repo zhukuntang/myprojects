@@ -17,9 +17,11 @@ namespace zhsqw.Controllers
             db = context;    
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            return View(db.news.ToList());
+            PagerHelper<news> pager = new PagerHelper<news>(db.news.ToList(), "/News/index", 1, page ?? 1, 3, false);
+            return View(pager);
+            //return View(db.news.ToList());
         }
 
         [HttpPost, ActionName("Index")]
