@@ -1,0 +1,61 @@
+﻿@model PagerHelper<news>
+
+@{
+    Layout = "_wuye";
+    ViewData["Title"] = "综合信息管理";
+}
+
+<form asp-action="Index" id="form1">
+    <div style="width:780px;margin:20px auto 0px">
+        <div style="float:left">
+            <a asp-action="Create" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加信息</a>
+            <a onclick="$('#form2').submit()" class="easyui-linkbutton" data-options="iconCls:'icon-ok',plain:true">批量删除</a>
+        </div>
+        <div style="float:right">
+            信息标题：
+            @Html.TextBox("areaname")
+            <a onclick="$('#form1').submit()" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">查询</a>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</form>
+<script type="text/javascript" src="/FusionCharts/FusionCharts.js"></script>
+<script type="text/javascript" src="/FusionCharts/FusionChartsExportComponent.js"></script>
+@ViewBag.zk
+<form asp-action="Index" id="form2">
+    <table cellpadding="0" cellspacing="0" style="width:780px">
+        <tr>
+            <th style="width:50px">选择</th>
+            <th style="width:130px">类别</th>
+            <th style="width:320px">标题</th>
+            <th style="width:130px">发布时间</th>
+            <th style="width:150px">操作</th>
+        </tr>
+        @foreach (var item in Model.PagedData)
+            {
+            <tr>
+                <td>
+                    <input type="checkbox" name="delChecked" value="@item.ID" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NewsClass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NewsTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookTime)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="return confirm('您确定删除吗？')">删除</a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td style="height:45px;text-align:center" colspan="5">
+                @Html.Raw(Model.PageNumberBar)
+            </td>
+        </tr>
+    </table>
+</form>
