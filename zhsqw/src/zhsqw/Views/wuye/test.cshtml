@@ -5,11 +5,14 @@
     <title>ueditor</title>
     <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.js"></script>
+    <script type="text/javascript" src="/FusionCharts/FusionCharts.js"></script>
+    <script type="text/javascript" src="/FusionCharts/FusionChartsExportComponent.js"></script>
 </head>
 <body>
     <textarea id="NewsContent"></textarea>
     <script type="text/javascript">
        UE.getEditor("NewsContent");
     </script>
+    @(new HtmlString(ViewBag.c))
 </body>
 </html>
